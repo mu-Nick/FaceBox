@@ -11,6 +11,6 @@ Postgres - For database (using Knex-js)
 
 Clarifai API - For face-detection
 
-A working of this app can be found at :-
+A working model of this app can be found at :-
 
 # https://face---box.herokuapp.com
