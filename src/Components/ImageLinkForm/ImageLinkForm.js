@@ -7,9 +7,9 @@ const ImageLinkForm = ({onInputChange, onButtonSubmit}) => {
 			<p className='f3'>
 				{'This is FaceBox, Paste image url below to box faces'}
 			</p>
-			<div className='w-70 center pa4 br3 shadow-5 pattern'>
-				<input className='f4 pa2 w-70 center' type='text' onChange={onInputChange}/>
-				<button className='w-30 grow f4 link ph3 pv2 dib white bg-light-purple' 
+			<div className='w-90 center pa4 br3 shadow-5 pattern'>
+				<input className='f4 pa2 center' type='text' onChange={onInputChange}/>
+				<button className='grow f4 link ph3 pv2 dib white bg-light-purple' 
 				onClick={onButtonSubmit}>Detect</button>
 			</div>
 		</div>
