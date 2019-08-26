@@ -183,6 +183,9 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({imageURL: this.state.input});
+    if(!this.state.input) {
+      return alert("Please enter a valid image URL");
+    }
     fetch('https://face-boxx.herokuapp.com/imageUrl', {
         method: 'post', 
         headers: {'Content-Type': 'application/json'},
@@ -190,25 +193,27 @@ class App extends Component {
           input: this.state.input
         })
       })
-      .then(response => response.json())
-      .then( response => {
-        if(response) {
-          fetch('https://face-boxx.herokuapp.com/image', {
-            method: 'put', 
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              id: this.state.user.id
-            })
+    .then(response => response.json())
+    .then( response => {
+      if(response !== "unable to work with API") {
+        fetch('https://face-boxx.herokuapp.com/image', {
+          method: 'put', 
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            id: this.state.user.id
           })
-            .then(response => response.json())
-            .then(count => {
-              this.setState(Object.assign(this.state.user, { entries: count }))
-            })
+        })
+        .then(response => response.json())
+        .then(count => {
+          if(count !== "unable to get entries")
+            this.setState(Object.assign(this.state.user, { entries: count }))
+        })
 
-        }
         this.displayFaceBox(this.calculateFaceLocation(response))
-      })
-      .catch(err => console.log(err));
+      }
+
+    })
+    .catch(err => console.log(err));
   }
 
   onRouteChange = (route) => {
