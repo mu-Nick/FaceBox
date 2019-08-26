@@ -10,3 +10,7 @@ Express-JS - For backend
 Postgres - For database (using Knex-js)
 
 Clarifai API - For face-detection
+
+A working of this app can be found at :-
+
+# https://face---box.herokuapp.com
